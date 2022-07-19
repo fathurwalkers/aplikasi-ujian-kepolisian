@@ -52,6 +52,11 @@
                     {{-- <div class="card mb-3"> --}}
                         {{-- <div class="card-body"> --}}
                             {{-- <div class="container"> --}}
+                                @if (session('status'))
+                                    <div class="alert alert-info">
+                                        {{ session('status') }}
+                                    </div>
+                                @endif
                                 @yield('main-content')
                             {{-- </div> --}}
                         {{-- </div> --}}

@@ -17,8 +17,34 @@ class UkomController extends Controller
 {
     public function data_ukom()
     {
-        return view('ukom.data-ukom');
+        $ukom = Ukom::all();
+        return view('ukom.data-ukom', [
+            'ukom' => $ukom
+        ]);
     }
 
-    public function
+    public function post_tambah_ukom(Request $request)
+    {
+        $session_users = session('data_login');
+        $users = Login::find($session_users->id);
+        if ($users->login_level !== 'admin') {
+            return redirect()->route('data-ukom')->with('status', 'Maaf, anda tidak memiliki akses untuk melakukan aksi ini!');
+        } else {
+            $ukom = new Ukom;
+            $ukom_nama = $request->ukom_nama;
+            $ukom_kode = "UKOM" . strtoupper(Str::random(10));
+
+            $save_ukom = $ukom->create([
+                'ukom_nama' => $ukom_nama,
+                'ukom_kode' => $ukom_kode,
+                'created_at' => now(),
+                'updated_at' => now()
+            ]);
+            if ($save_ukom !== null) {
+                return redirect()->route('data-ukom')->with('status', 'Penambahan data ukom berhasil!');
+            } else {
+                return redirect()->route('data-ukom')->with('status', 'Penambahan data ukom gagal!');
+            }
+        }
+    }
 }

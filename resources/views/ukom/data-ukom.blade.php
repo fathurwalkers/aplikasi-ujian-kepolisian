@@ -74,36 +74,18 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                @foreach ($ukom as $item)
                                 <tr>
-                                    <td>1</td>
-                                    <td>Bahasa Indonesia</td>
-                                    <td>UKOM39C9D2ZX</td>
-                                    <td class="mx-auto">
+                                    <td>{{ $loop->iteration }}</td>
+                                    <td>{{ $item->ukom_nama }}</td>
+                                    <td>{{ $item->ukom_kode }}</td>
+                                    <td class="d-flex justify-content-center mx-auto">
                                         <button type="button" class="btn btn-sm btn-success mr-1">Lihat</button>
-                                        <button type="button" class="btn btn-sm btn-info">Ubah</button>
+                                        <button type="button" class="btn btn-sm btn-info mr-1">Ubah</button>
                                         <button type="button" class="btn btn-sm btn-danger">Hapus</button>
                                     </td>
                                 </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td>Bahasa Inggris</td>
-                                    <td>UKOM39C9S2ZX</td>
-                                    <td class="mx-auto">
-                                        <button type="button" class="btn btn-sm btn-success mr-1">Lihat</button>
-                                        <button type="button" class="btn btn-sm btn-info">Ubah</button>
-                                        <button type="button" class="btn btn-sm btn-danger">Hapus</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td>Bahasa Spanyol</td>
-                                    <td>UKOM3DD292ZX</td>
-                                    <td class="mx-auto">
-                                        <button type="button" class="btn btn-sm btn-success mr-1">Lihat</button>
-                                        <button type="button" class="btn btn-sm btn-info">Ubah</button>
-                                        <button type="button" class="btn btn-sm btn-danger">Hapus</button>
-                                    </td>
-                                </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
