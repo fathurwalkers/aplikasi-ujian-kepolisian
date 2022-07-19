@@ -27,8 +27,8 @@ class CreateSoalsTable extends Migration
             $table->string('soal_jawaban')->nullable();
             $table->string('soal_bobot_nilai')->nullable();
 
-            $table->unsignedBigInteger('login_id')->nullable()->default(null);
-            $table->foreign('login_id')->references('id')->on('login')->onDelete('cascade');
+            // $table->unsignedBigInteger('login_id')->nullable()->default(null);
+            // $table->foreign('login_id')->references('id')->on('login')->onDelete('cascade');
 
             $table->unsignedBigInteger('ukom_id')->nullable()->default(null);
             $table->foreign('ukom_id')->references('id')->on('ukom')->onDelete('cascade');

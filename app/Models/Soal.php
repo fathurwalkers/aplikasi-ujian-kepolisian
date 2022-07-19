@@ -14,10 +14,10 @@ class Soal extends Model
     protected $guarded = [];
     protected $primaryKey = "id";
 
-    public function login()
-    {
-        return $this->belongsTo(Login::class);
-    }
+    // public function login()
+    // {
+    //     return $this->belongsTo(Login::class);
+    // }
 
     public function ukom()
     {

@@ -19,8 +19,8 @@ class Login extends Model
         return $this->hasMany(Data::class);
     }
 
-    public function soal()
-    {
-        return $this->hasMany(Soal::class);
-    }
+    // public function soal()
+    // {
+    //     return $this->hasMany(Soal::class);
+    // }
 }
