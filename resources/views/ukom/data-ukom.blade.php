@@ -14,11 +14,52 @@
         <div class="card-body">
             <div class="container">
                 <div class="row">
-                    <h4>
-                        <b>
-                            Daftar UKOM
-                        </b>
-                    </h4>
+                    <div class="col-sm-6 col-md-6 col-lg-6">
+                        <h4>
+                            <b>
+                                Daftar UKOM
+                            </b>
+                        </h4>
+                    </div>
+                    <div class="col-sm-6 col-md-6 col-lg-6 d-flex justify-content-end">
+                        <button class="btn btn-md btn-info" data-toggle="modal" data-target="#tambahdatamodal">TAMBAH
+                            DATA</button>
+                    </div>
+
+                    <div class="modal fade" id="tambahdatamodal" tabindex="-1" role="dialog"
+                        aria-labelledby="exampleModalLabelLogout" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabelLogout">Ohh No!</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <form action="{{ route('post-tambah-ukom') }}" method="POST">
+                                    @csrf
+                                    <div class="modal-body">
+
+                                        <div class="row">
+                                            <div class="col-sm-12 col-md-12 col-lg-12">
+                                                <div class="form-group">
+                                                    <label for="ukom_nama">Uji Kompetensi</label>
+                                                    <input type="text" class="form-control" id="ukom_nama" placeholder="Contoh : Bahasa Indonesia" name="ukom_nama">
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-outline-primary"
+                                            data-dismiss="modal">Batalkan</button>
+                                        <button type="submit" class="btn btn-primary">Simpan</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
                 <hr />
                 <div class="row">
