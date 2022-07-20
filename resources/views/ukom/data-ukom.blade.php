@@ -101,7 +101,7 @@
                                                             <span aria-hidden="true">&times;</span>
                                                         </button>
                                                     </div>
-                                                    <form action="{{ route('post-update-ukom') }}" method="POST">
+                                                    <form action="{{ route('update-ukom', $item->id) }}" method="POST">
                                                         @csrf
                                                         <div class="modal-body">
 
@@ -109,7 +109,7 @@
                                                                 <div class="col-sm-12 col-md-12 col-lg-12">
                                                                     <div class="form-group">
                                                                         <label for="ukom_nama">Uji Kompetensi</label>
-                                                                        <input type="text" class="form-control" id="ukom_nama" placeholder="Contoh : Bahasa Indonesia" name="ukom_nama">
+                                                                        <input type="text" class="form-control" id="ukom_nama" value="{{ $item->ukom_nama }}" name="ukom_nama">
                                                                     </div>
                                                                 </div>
                                                             </div>

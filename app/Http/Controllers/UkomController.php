@@ -31,6 +31,27 @@ class UkomController extends Controller
         return redirect()->route('data-ukom')->with('status', 'Data UKOM telah dihapus.');
     }
 
+    public function update_ukom(Request $request, $id)
+    {
+        $session_users = session('data_login');
+        $users = Login::find($session_users->id);
+        if ($users->login_level !== 'admin') {
+            return redirect()->route('data-ukom')->with('status', 'Maaf, anda tidak memiliki akses untuk melakukan aksi ini!');
+        } else {
+            $ukom = Ukom::find($id);
+            if ($ukom == null) {
+                return redirect()->route('data-ukom')->with('status', 'Maaf, Data yang anda ingin kelola tidak tersedia.');
+            } else {
+                $ukom_nama = $request->ukom_nama;
+                $ukom->update([
+                    'ukom_nama' => $ukom_nama,
+                    'updated_at' => now()
+                ]);
+                return redirect()->route('data-ukom')->with('status', 'Data UKOM Telah berhasil diubah.');
+            }
+        }
+    }
+
     public function post_tambah_ukom(Request $request)
     {
         $session_users = session('data_login');
@@ -48,6 +69,7 @@ class UkomController extends Controller
                 'created_at' => now(),
                 'updated_at' => now()
             ]);
+            $save_ukom->save();
             if ($save_ukom !== null) {
                 return redirect()->route('data-ukom')->with('status', 'Penambahan data ukom berhasil!');
             } else {
