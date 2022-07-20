@@ -9,7 +9,7 @@
 @endpush
 
 @section('main-content')
-    <div class="row mt-2">
+    {{-- <div class="row mt-2">
         <div class="col-sm-12 col-md-12 col-lg-12">
             @if (session('status'))
                 <div class="alert alert-success">
@@ -17,7 +17,7 @@
                 </div>
             @endif
         </div>
-    </div>
+    </div> --}}
     <div class="row">
         <div class="col-xl-3 col-md-6 mb-4">
             <div class="card h-100">

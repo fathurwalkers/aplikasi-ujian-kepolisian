@@ -23,6 +23,14 @@ class UkomController extends Controller
         ]);
     }
 
+    public function hapus_ukom(Request $request, $id)
+    {
+        $ukom_id = $id;
+        $getdelete = Ukom::findOrFail($ukom_id);
+        $getdelete->forceDelete();
+        return redirect()->route('data-ukom')->with('status', 'Data peserta telah dihapus.');
+    }
+
     public function post_tambah_ukom(Request $request)
     {
         $session_users = session('data_login');
