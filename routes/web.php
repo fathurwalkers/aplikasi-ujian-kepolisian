@@ -35,6 +35,7 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'cekloginadmin'], functio
     // UKOM
     Route::get('/data-ukom', [UkomController::class, 'data_ukom'])->name('data-ukom');
     Route::post('/post-tambah-ukom', [UkomController::class, 'post_tambah_ukom'])->name('post-tambah-ukom');
+    Route::post('/hapus-ukom/{id}', [UkomController::class, 'hapus_ukom'])->name('hapus-ukom');
 
     // UKOM
     Route::get('/jadwal-ujian', [UjianController::class, 'jadwal_ujian'])->name('jadwal-ujian');
