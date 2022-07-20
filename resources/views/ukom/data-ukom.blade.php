@@ -45,7 +45,8 @@
                                             <div class="col-sm-12 col-md-12 col-lg-12">
                                                 <div class="form-group">
                                                     <label for="ukom_nama">Uji Kompetensi</label>
-                                                    <input type="text" class="form-control" id="ukom_nama" placeholder="Contoh : Bahasa Indonesia" name="ukom_nama">
+                                                    <input type="text" class="form-control" id="ukom_nama"
+                                                        placeholder="Contoh : Bahasa Indonesia" name="ukom_nama">
                                                 </div>
                                             </div>
                                         </div>
@@ -76,88 +77,102 @@
                             </thead>
                             <tbody>
                                 @foreach ($ukom as $item)
-                                <tr>
-                                    <td>{{ $loop->iteration }}</td>
-                                    <td>{{ $item->ukom_nama }}</td>
-                                    <td>{{ $item->ukom_kode }}</td>
-                                    <td class="d-flex justify-content-center mx-auto">
+                                    <tr>
+                                        <td>{{ $loop->iteration }}</td>
+                                        <td>{{ $item->ukom_nama }}</td>
+                                        <td>{{ $item->ukom_kode }}</td>
+                                        <td class="d-flex justify-content-center mx-auto">
 
-                                        <div class="row btn-group">
-                                            <div class="col-sm-12 col-md-12 col-lg-12 btn-group">
-                                                <button type="button" class="btn btn-sm btn-success mr-1">Lihat</button>
-                                                <button type="button" class="btn btn-sm btn-info mr-1" data-toggle="modal" data-target="#modalupdate">Ubah</button>
-                                                <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#modalhapus">Hapus</button>
+                                            <div class="row btn-group">
+                                                <div class="col-sm-12 col-md-12 col-lg-12 btn-group">
+                                                    <button type="button"
+                                                        class="btn btn-sm btn-success mr-1">Lihat</button>
+                                                    <button type="button" class="btn btn-sm btn-info mr-1"
+                                                        data-toggle="modal" data-target="#modalupdate">Ubah</button>
+                                                    <button type="button" class="btn btn-sm btn-danger" data-toggle="modal"
+                                                        data-target="#modalhapus">Hapus</button>
+                                                </div>
                                             </div>
-                                        </div>
 
-                                        {{-- MODAL UPDATE DATA UKOM --}}
-                                        <div class="modal fade" id="modalupdate" tabindex="-1" role="dialog"
-                                        aria-labelledby="exampleModalLabelLogout" aria-hidden="true">
-                                            <div class="modal-dialog" role="document">
-                                                <div class="modal-content">
-                                                    <div class="modal-header">
-                                                        <h5 class="modal-title" id="exampleModalLabelLogout">Form Ubah Data UKOM</h5>
-                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                            <span aria-hidden="true">&times;</span>
-                                                        </button>
-                                                    </div>
-                                                    <form action="{{ route('update-ukom', $item->id) }}" method="POST">
-                                                        @csrf
-                                                        <div class="modal-body">
+                                            {{-- MODAL UPDATE DATA UKOM --}}
+                                            <div class="modal fade" id="modalupdate" tabindex="-1" role="dialog"
+                                                aria-labelledby="exampleModalLabelLogout" aria-hidden="true">
+                                                <div class="modal-dialog" role="document">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="exampleModalLabelLogout">Form Ubah
+                                                                Data UKOM</h5>
+                                                            <button type="button" class="close" data-dismiss="modal"
+                                                                aria-label="Close">
+                                                                <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                        </div>
+                                                        <form action="{{ route('update-ukom', $item->id) }}"
+                                                            method="POST">
+                                                            @csrf
+                                                            <div class="modal-body">
 
-                                                            <div class="row">
-                                                                <div class="col-sm-12 col-md-12 col-lg-12">
-                                                                    <div class="form-group">
-                                                                        <label for="ukom_nama">Uji Kompetensi</label>
-                                                                        <input type="text" class="form-control" id="ukom_nama" value="{{ $item->ukom_nama }}" name="ukom_nama">
+                                                                <div class="row">
+                                                                    <div class="col-sm-12 col-md-12 col-lg-12">
+                                                                        <div class="form-group">
+                                                                            <label for="ukom_nama">Uji Kompetensi</label>
+                                                                            <input type="text" class="form-control"
+                                                                                id="ukom_nama"
+                                                                                value="{{ $item->ukom_nama }}"
+                                                                                name="ukom_nama">
+                                                                        </div>
                                                                     </div>
                                                                 </div>
+
                                                             </div>
-
-                                                        </div>
-                                                        <div class="modal-footer">
-                                                            <button type="button" class="btn btn-outline-primary"
-                                                                data-dismiss="modal">Batalkan</button>
-                                                            <button type="submit" class="btn btn-primary">Simpan</button>
-                                                        </div>
-                                                    </form>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        {{-- MODAL HAPUS UKOM --}}
-                                        <div class="modal fade" id="modalhapus" tabindex="-1" role="dialog"
-                                        aria-labelledby="exampleModalLabelLogout" aria-hidden="true">
-                                            <div class="modal-dialog" role="document">
-                                                <div class="modal-content">
-                                                    <div class="modal-header">
-                                                        <h5 class="modal-title" id="exampleModalLabelLogout">Ohh No!</h5>
-                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                            <span aria-hidden="true">&times;</span>
-                                                        </button>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-outline-primary"
+                                                                    data-dismiss="modal">Batalkan</button>
+                                                                <button type="submit"
+                                                                    class="btn btn-primary">Simpan</button>
+                                                            </div>
+                                                        </form>
                                                     </div>
-                                                    <form action="{{ route('hapus-ukom', $item->id) }}" method="POST">
-                                                        @csrf
-                                                        <div class="modal-body">
-                                                            <div class="row">
-                                                                <div class="col-sm-12 col-md-12 col-lg-12">
-                                                                    Apakah anda Yakin ingin menghapus data ini?
-                                                                </div>
-                                                            </div>
-
-                                                        </div>
-                                                        <div class="modal-footer">
-                                                            <button type="button" class="btn btn-outline-primary"
-                                                                data-dismiss="modal">Batalkan</button>
-                                                            <button type="submit" class="btn btn-primary">Simpan</button>
-                                                        </div>
-                                                    </form>
                                                 </div>
                                             </div>
-                                        </div>
 
-                                    </td>
-                                </tr>
+                                            {{-- MODAL HAPUS UKOM --}}
+                                            <div class="modal fade" id="modalhapus" tabindex="-1" role="dialog"
+                                                aria-labelledby="exampleModalLabelLogout" aria-hidden="true">
+                                                <div class="modal-dialog" role="document">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="exampleModalLabelLogout">Ohh No!
+                                                            </h5>
+                                                            <button type="button" class="close" data-dismiss="modal"
+                                                                aria-label="Close">
+                                                                <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                        </div>
+                                                        <form action="{{ route('hapus-ukom', $item->id) }}"
+                                                            method="POST">
+                                                            @csrf
+                                                            <div class="modal-body">
+                                                                <div class="row">
+                                                                    <div class="col-sm-12 col-md-12 col-lg-12">
+                                                                        Apakah anda Yakin ingin menghapus data ini?
+                                                                    </div>
+                                                                </div>
+
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-outline-primary"
+                                                                    data-dismiss="modal">Batalkan</button>
+                                                                <button type="submit"
+                                                                    class="btn btn-primary">Simpan</button>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </td>
+                                    </tr>
                                 @endforeach
                             </tbody>
                         </table>
