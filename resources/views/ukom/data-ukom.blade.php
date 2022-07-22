@@ -85,8 +85,7 @@
 
                                             <div class="row btn-group">
                                                 <div class="col-sm-12 col-md-12 col-lg-12 btn-group">
-                                                    <button type="button"
-                                                        class="btn btn-sm btn-success mr-1">Lihat</button>
+                                                    {{-- <button type="button" class="btn btn-sm btn-success mr-1">Lihat</button> --}}
                                                     <button type="button" class="btn btn-sm btn-info mr-1"
                                                         data-toggle="modal" data-target="#modalupdate">Ubah</button>
                                                     <button type="button" class="btn btn-sm btn-danger" data-toggle="modal"
