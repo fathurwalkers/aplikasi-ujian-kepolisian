@@ -62,7 +62,6 @@ class UkomController extends Controller
             $ukom = new Ukom;
             $ukom_nama = $request->ukom_nama;
             $ukom_kode = "UKOM" . strtoupper(Str::random(10));
-
             $save_ukom = $ukom->create([
                 'ukom_nama' => $ukom_nama,
                 'ukom_kode' => $ukom_kode,
