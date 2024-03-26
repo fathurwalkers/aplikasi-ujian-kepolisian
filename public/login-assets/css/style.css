@@ -1,0 +1,213 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@200;400;800&display=swap");
+
+body {
+  font-family: "Nunito Sans", sans-serif;
+  background: rgb(228, 238, 182);
+  margin: 0;
+  padding: 0;
+}
+
+.container1 {
+  background-color: rgb(229, 231, 231);
+  height: 100vh;
+}
+
+.container-fluid h6 {
+  margin-top: -30px;
+  margin-bottom: 40px;
+}
+
+.img1 {
+  width: 80px;
+  text-align: center;
+  margin: auto;
+  margin-bottom: 20px;
+}
+
+.navbar {
+  background-color: rgb(202, 199, 199);
+}
+
+.col-9 {
+  text-align: center;
+}
+.header {
+  padding-top: 30px;
+  text-align: center;
+}
+
+.container h1 {
+  text-align: center;
+  font-size: 30px;
+}
+
+.header h6 {
+  margin-top: -30px;
+  margin-bottom: 40px;
+}
+
+form button {
+  text-align: center;
+  align-items: center;
+}
+
+.card-body .row .col-4 {
+  margin-bottom: 20px;
+}
+
+footer {
+  padding: 10px;
+  margin-top: 10px;
+  font-size: 14px;
+}
+
+footer ul {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  list-style: none;
+  padding: 0;
+  padding-top: 10px;
+}
+
+footer ul li {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #fff;
+}
+
+footer ul li i {
+  font-size: 25px;
+}
+
+.profile-pic-wrapper {
+  width: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+}
+.pic-holder {
+  text-align: center;
+  position: relative;
+  border-radius: 50%;
+  width: 150px;
+  height: 150px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.pic-holder .pic {
+  height: 100%;
+  width: 100%;
+  -o-object-fit: cover;
+  object-fit: cover;
+  -o-object-position: center;
+  object-position: center;
+}
+
+.pic-holder .upload-file-block,
+.pic-holder .upload-loader {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(90, 92, 105, 0.7);
+  color: #f8f9fc;
+  font-size: 12px;
+  font-weight: 600;
+  opacity: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+
+.pic-holder .upload-file-block {
+  cursor: pointer;
+}
+
+.pic-holder:hover .upload-file-block {
+  opacity: 1;
+}
+
+.pic-holder.uploadInProgress .upload-file-block {
+  display: none;
+}
+
+.pic-holder.uploadInProgress .upload-loader {
+  opacity: 1;
+}
+
+/* Snackbar css */
+.snackbar {
+  visibility: hidden;
+  min-width: 250px;
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  border-radius: 2px;
+  padding: 16px;
+  position: fixed;
+  z-index: 1;
+  left: 50%;
+  bottom: 30px;
+  font-size: 14px;
+  transform: translateX(-50%);
+}
+
+.snackbar.show {
+  visibility: visible;
+  -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+  animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+@-webkit-keyframes fadein {
+  from {
+    bottom: 0;
+    opacity: 0;
+  }
+  to {
+    bottom: 30px;
+    opacity: 1;
+  }
+}
+
+@keyframes fadein {
+  from {
+    bottom: 0;
+    opacity: 0;
+  }
+  to {
+    bottom: 30px;
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes fadeout {
+  from {
+    bottom: 30px;
+    opacity: 1;
+  }
+  to {
+    bottom: 0;
+    opacity: 0;
+  }
+}
+
+@keyframes fadeout {
+  from {
+    bottom: 30px;
+    opacity: 1;
+  }
+  to {
+    bottom: 0;
+    opacity: 0;
+  }
+}
