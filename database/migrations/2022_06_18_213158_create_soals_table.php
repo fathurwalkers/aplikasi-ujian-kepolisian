@@ -15,7 +15,7 @@ class CreateSoalsTable extends Migration
             $table->string('soal_kategori')->nullable();
             $table->string('soal_kode')->nullable();
             $table->text('soal_isi')->nullable();
-            $table->text('soal_isi_gambar')->nullable();
+            $table->string('soal_isi_gambar')->nullable();
             $table->text('soal_opsi_a')->nullable();
             $table->text('soal_opsi_b')->nullable();
             $table->text('soal_opsi_c')->nullable();
