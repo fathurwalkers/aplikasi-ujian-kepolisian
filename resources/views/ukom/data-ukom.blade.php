@@ -60,6 +60,7 @@
                                                         <option value="kecermatan">KECERMATAN</option>
                                                         <option value="kepribadian">KEPRIBADIAN</option>
                                                         <option value="kecerdasan">KECERDASAN</option>
+                                                        <option value="campur">CAMPUR</option>
                                                     </select>
                                                 </div>
                                             </div>

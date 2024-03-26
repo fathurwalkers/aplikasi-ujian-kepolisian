@@ -27,6 +27,9 @@
                         case 'kecerdasan':
                             $post_route = route('post-tambah-soal-reguler');
                             break;
+                        case 'campur':
+                            $post_route = route('post-tambah-soal-reguler');
+                            break;
                         case 'kecermatan':
                             $post_route = route('post-tambah-soal-kecermatan');
                             break;
@@ -69,6 +72,146 @@
                                             required accept-charset="UTF-8">
                                     </div>
                                 </div>
+                            </div>
+                        @break
+
+                        {{-- // =========================================================================== --}}
+                        @case('campur')
+                            <div class="row mb-2">
+                                <div class="col-sm-12 col-md-12 col-lg-12">
+                                    <label for="soal_isi">
+                                        <h6 class="text-dark">Isi Soal</h6>
+                                    </label>
+                                    <textarea id="" class="summernoteclass" name="soal_isi" required></textarea>
+                                </div>
+                            </div>
+                            <div class="row mt-2">
+                                <div class="col-sm-12 col-md-12 col-lg-12">
+                                    <div class="form-group">
+                                        <label for="soal_jawaban">
+                                            <h6 class="text-dark">Kunci Jawaban</h6>
+                                        </label>
+                                        <select class="form-control" id="soal_jawaban" name="soal_jawaban">
+                                            <option default value="A">A</option>
+                                            <option value="B">B</option>
+                                            @if ($ukom->ukom_kategori !== 'kepribadian')
+                                                <option value="C">C</option>
+                                                <option value="D">D</option>
+                                                <option value="E">E</option>
+                                            @endif
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="container">
+
+                                <hr>
+                                <div class="row">
+                                    <div class="col-sm-6 col-md-6 col-lg-6">
+                                        <div class="form-group">
+                                            <label for="soal_opsi_a">Opsi A</label>
+                                            <input type="text" class="form-control" id="soal_opsi_a"
+                                                placeholder="Masukkan opsi pilihan A" name="soal_opsi_a">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6 col-md-6 col-lg-6">
+                                        <div class="form-group">
+                                            <label for="exampleFormControlFile1">Gambar Opsi A : </label>
+                                            <input type="file" class="form-control-file" onchange="preview_image(event)"
+                                                name="soal_gambar_a">
+                                            <small class="form-text text-muted">Upload Pas Foto ekstensi .jpg. Biarkan kosong jika
+                                                tidak ada gambar</small>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <hr>
+                                <div class="row">
+                                    <div class="col-sm-6 col-md-6 col-lg-6">
+                                        <div class="form-group">
+                                            <label for="soal_opsi_b">Opsi B</label>
+                                            <input type="text" class="form-control" id="soal_opsi_b"
+                                                placeholder="Masukkan opsi pilihan B" name="soal_opsi_b">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6 col-md-6 col-lg-6">
+                                        <div class="form-group">
+                                            <label for="exampleFormControlFile1">Gambar Opsi B : </label>
+                                            <input type="file" class="form-control-file" onchange="preview_image(event)"
+                                                name="soal_gambar_b">
+                                            <small class="form-text text-muted">Upload Pas Foto ekstensi .jpg. Biarkan kosong jika
+                                                tidak ada gambar</small>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+                                @if ($ukom->ukom_kategori !== 'kepribadian')
+                                    <hr>
+                                    <div class="row">
+                                        <div class="col-sm-6 col-md-6 col-lg-6">
+                                            <div class="form-group">
+                                                <label for="soal_opsi_c">Opsi C</label>
+                                                <input type="text" class="form-control" id="soal_opsi_c"
+                                                    placeholder="Masukkan opsi pilihan C" name="soal_opsi_c">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6 col-md-6 col-lg-6">
+                                            <div class="form-group">
+                                                <label for="exampleFormControlFile1">Gambar Opsi C : </label>
+                                                <input type="file" class="form-control-file" onchange="preview_image(event)"
+                                                    name="soal_gambar_c">
+                                                <small class="form-text text-muted">Upload Pas Foto ekstensi .jpg. Biarkan kosong
+                                                    jika
+                                                    tidak ada gambar</small>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <hr>
+                                    <div class="row">
+                                        <div class="col-sm-6 col-md-6 col-lg-6">
+                                            <div class="form-group">
+                                                <label for="soal_opsi_d">Opsi D</label>
+                                                <input type="text" class="form-control" id="soal_opsi_d"
+                                                    placeholder="Masukkan opsi pilihan D" name="soal_opsi_d">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6 col-md-6 col-lg-6">
+                                            <div class="form-group">
+                                                <label for="exampleFormControlFile1">Gambar Opsi D : </label>
+                                                <input type="file" class="form-control-file" onchange="preview_image(event)"
+                                                    name="soal_gambar_d">
+                                                <small class="form-text text-muted">Upload Pas Foto ekstensi .jpg. Biarkan kosong
+                                                    jika
+                                                    tidak ada gambar</small>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <hr>
+                                    <div class="row">
+                                        <div class="col-sm-6 col-md-6 col-lg-6">
+                                            <div class="form-group">
+                                                <label for="soal_opsi_e">Opsi E</label>
+                                                <input type="text" class="form-control" id="soal_opsi_e"
+                                                    placeholder="Masukkan opsi pilihan E" name="soal_opsi_e">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6 col-md-6 col-lg-6">
+                                            <div class="form-group">
+                                                <label for="exampleFormControlFile1">Gambar Opsi E : </label>
+                                                <input type="file" class="form-control-file" onchange="preview_image(event)"
+                                                    name="soal_gambar_e">
+                                                <small class="form-text text-muted">Upload Pas Foto ekstensi .jpg. Biarkan kosong
+                                                    jika
+                                                    tidak ada gambar</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endif
+                                <hr>
                             </div>
                         @break
 
@@ -255,5 +398,15 @@
                 }
             });
         });
+    </script>
+    <script type='text/javascript'>
+        function preview_image(event) {
+            var reader = new FileReader();
+            reader.onload = function() {
+                var output = document.getElementById('output_image');
+                output.src = reader.result;
+            }
+            reader.readAsDataURL(event.target.files[0]);
+        }
     </script>
 @endpush

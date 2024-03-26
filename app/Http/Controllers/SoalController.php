@@ -31,6 +31,92 @@ class SoalController extends Controller
         ]);
     }
 
+    public function post_tambah_soal_gambar(Request $request)
+    {
+        $ukom_id = $request->ukom_id;
+        $ukom = Ukom::find($ukom_id);
+
+        $soal_jawaban = $request->soal_jawaban;
+        $soal_isi = $request->soal_isi;
+        $soal_opsi_a = $request->soal_opsi_a;
+        $soal_opsi_b = $request->soal_opsi_b;
+        $soal_opsi_c = $request->soal_opsi_c;
+        $soal_opsi_d = $request->soal_opsi_d;
+        $soal_opsi_e = $request->soal_opsi_e;
+
+        $soal_gambar_a_cek = $request->file('soal_gambar_a');
+        if (!$soal_gambar_a_cek) {
+            $soal_gambar_a = null;
+        } else {
+            $randomNamaGambar_a = Str::random(10) . '.jpg';
+            $soal_gambar_a = $request->file('soal_gambar_a')->move(public_path('foto'), strtolower($randomNamaGambar_a));
+        }
+
+        $soal_gambar_b_cek = $request->file('soal_gambar_b');
+        if (!$soal_gambar_b_cek) {
+            $soal_gambar_b = null;
+        } else {
+            $randomNamaGambar_b = Str::random(10) . '.jpg';
+            $soal_gambar_b = $request->file('soal_gambar_b')->move(public_path('foto'), strtolower($randomNamaGambar_b));
+        }
+
+        $soal_gambar_c_cek = $request->file('soal_gambar_c');
+        if (!$soal_gambar_c_cek) {
+            $soal_gambar_c = null;
+        } else {
+            $randomNamaGambar_c = Str::random(10) . '.jpg';
+            $soal_gambar_c = $request->file('soal_gambar_c')->move(public_path('foto'), strtolower($randomNamaGambar_c));
+        }
+
+        $soal_gambar_d_cek = $request->file('soal_gambar_d');
+        if (!$soal_gambar_d_cek) {
+            $soal_gambar_d = null;
+        } else {
+            $randomNamaGambar_d = Str::random(10) . '.jpg';
+            $soal_gambar_d = $request->file('soal_gambar_d')->move(public_path('foto'), strtolower($randomNamaGambar_d));
+        }
+
+        $soal_gambar_e_cek = $request->file('soal_gambar_e');
+        if (!$soal_gambar_e_cek) {
+            $soal_gambar_e = null;
+        } else {
+            $randomNamaGambar_e = Str::random(10) . '.jpg';
+            $soal_gambar_e = $request->file('soal_gambar_e')->move(public_path('foto'), strtolower($randomNamaGambar_e));
+        }
+        dd();
+
+        $soal = new Soal;
+        $soal_kategori = $ukom->ukom_kategori;
+        $soal_kode = strtoupper(Str::random(10));
+        $save_soal = $soal->create([
+            "soal_kategori" => $soal_kategori,
+            "soal_kode" => $soal_kode,
+            "soal_isi" => $soal_isi,
+            "soal_isi_gambar" => null,
+            "soal_opsi_a" => strtoupper($soal_opsi_a),
+            "soal_opsi_b" => strtoupper($soal_opsi_b),
+            "soal_opsi_c" => strtoupper($soal_opsi_c),
+            "soal_opsi_d" => strtoupper($soal_opsi_d),
+            "soal_opsi_e" => strtoupper($soal_opsi_e),
+            "soal_opsi_gambar_a" => $soal_gambar_a,
+            "soal_opsi_gambar_b" => $soal_gambar_b,
+            "soal_opsi_gambar_c" => $soal_gambar_c,
+            "soal_opsi_gambar_d" => $soal_gambar_d,
+            "soal_opsi_gambar_e" => $soal_gambar_e,
+            "soal_jawaban" => strtoupper($soal_jawaban),
+            "soal_bobot_nilai" => 10,
+            "ukom_id" => $ukom->id,
+            "created_at" => now(),
+            "updated_at" => now(),
+        ]);
+        $save_soal->save();
+        if ($save_soal == true) {
+            return redirect()->route('lihat-soal', $ukom_id)->with('status', 'Berhasil menambahkan Data Bank Soal baru untuk Uji Kompetensi Tipe REGULER.');
+        } else {
+            return redirect()->route('lihat-soal', $ukom_id)->with('status', 'Terjadi kesalahan, soal tidak dapat ditambahkan.');
+        }
+    }
+
     public function post_tambah_soal_reguler(Request $request)
     {
         $ukom_id = $request->ukom_id;

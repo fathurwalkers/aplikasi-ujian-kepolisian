@@ -60,6 +60,7 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'cekloginadmin'], functio
     Route::get('/bank-soal', [SoalController::class, 'bank_soal'])->name('bank-soal');
     Route::get('/lihat-soal/{ukom_id}', [SoalController::class, 'lihat_soal'])->name('lihat-soal');
     Route::post('/bank-soal/tambah-soal/reguler', [SoalController::class, 'post_tambah_soal_reguler'])->name('post-tambah-soal-reguler');
+    Route::post('/bank-soal/tambah-soal/gambar', [SoalController::class, 'post_tambah_soal_gambar'])->name('post-tambah-soal-gambar');
     Route::post('/bank-soal/tambah-soal/kecermatan', [SoalController::class, 'post_tambah_soal_kecermatan'])->name('post-tambah-soal-kecermatan');
 
     // AKUN
