@@ -28,14 +28,15 @@
                             $post_route = route('post-tambah-soal-reguler');
                             break;
                         case 'campur':
-                            $post_route = route('post-tambah-soal-reguler');
+                            $post_route = route('post-tambah-soal-campur');
                             break;
                         case 'kecermatan':
                             $post_route = route('post-tambah-soal-kecermatan');
                             break;
                     }
                 @endphp
-                <form action="{{ $post_route }}" method="POST" accept-charset="UTF-8">
+                <form action="{{ $post_route }}" method="POST" accept-charset="UTF-8"
+                    @if ($ukom->ukom_kategori == 'campur') enctype="multipart/form-data" @endif>
                     @csrf
 
                     <input type="hidden" name="ukom_id" value="{{ $ukom->id }}">

@@ -31,7 +31,7 @@ class SoalController extends Controller
         ]);
     }
 
-    public function post_tambah_soal_gambar(Request $request)
+    public function post_tambah_soal_campur(Request $request)
     {
         $ukom_id = $request->ukom_id;
         $ukom = Ukom::find($ukom_id);
@@ -83,7 +83,12 @@ class SoalController extends Controller
             $randomNamaGambar_e = Str::random(10) . '.jpg';
             $soal_gambar_e = $request->file('soal_gambar_e')->move(public_path('foto'), strtolower($randomNamaGambar_e));
         }
-        dd();
+        dump($soal_gambar_a);
+        dump($soal_gambar_b);
+        dump($soal_gambar_c);
+        dump($soal_gambar_d);
+        dump($soal_gambar_e);
+        die;
 
         $soal = new Soal;
         $soal_kategori = $ukom->ukom_kategori;
