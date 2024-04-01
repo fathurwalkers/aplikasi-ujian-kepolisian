@@ -61,51 +61,79 @@
                             <div class="col-sm-6 col-md-6 col-lg-6">
                                 <label for="">Soal Nomor {{ $loop->iteration }} <br /> {!! $item->soal_isi !!}</label>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="requestsoal{{ $item->id }}"
-                                        id="idsoal{{ $item->id }}a" value="A">
-                                    <label class="form-check-label" for="idsoal{{ $item->id }}a">
-                                        A. {{ $item->soal_opsi_a }}
-                                    </label>
+                                    <div class="row mb-2 mt-2">
+                                        <div class="col-sm-6 col-md-6 col-lg-6">
+                                            <input class="form-check-input" type="radio" name="requestsoal{{ $item->id }}"
+                                            id="idsoal{{ $item->id }}a" value="A">
+                                            <label class="form-check-label" for="idsoal{{ $item->id }}a">
+                                                A. {{ $item->soal_opsi_a }}
+                                            </label>
+                                        </div>
+                                        <div class="col-sm-6 col-md-6 col-lg-6">
+                                            <img src="{{ asset('/foto') }}/{{ $item->soal_opsi_gambar_a }}" alt="" width="85px">
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="requestsoal{{ $item->id }}"
-                                        id="idsoal{{ $item->id }}b" value="B">
-                                    <label class="form-check-label" for="idsoal{{ $item->id }}b">
-                                        B. {{ $item->soal_opsi_b }}
-                                    </label>
+                                    <div class="row mb-2 mt-2">
+                                        <div class="col-sm-6 col-md-6 col-lg-6">
+                                            <input class="form-check-input" type="radio" name="requestsoal{{ $item->id }}"
+                                            id="idsoal{{ $item->id }}b" value="B">
+                                            <label class="form-check-label" for="idsoal{{ $item->id }}b">
+                                                B. {{ $item->soal_opsi_b }}
+                                            </label>
+                                        </div>
+                                        <div class="col-sm-6 col-md-6 col-lg-6">
+                                            <img src="{{ asset('/foto') }}/{{ $item->soal_opsi_gambar_b }}" alt="" width="85px">
+                                        </div>
+                                    </div>
                                 </div>
                                 @if ($ukom->ukom_kategori !== 'kepribadian' && $ukom->ukom_kategori == 'campur')
                                 <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="requestsoal{{ $item->id }}"
-                                        id="idsoal{{ $item->id }}c" value="C">
-                                    <label class="form-check-label" for="idsoal{{ $item->id }}c">
-                                        C. {{ $item->soal_opsi_c }}
-                                    </label>
+                                    <div class="row mb-2 mt-2">
+                                        <div class="col-sm-6 col-md-6 col-lg-6">
+                                            <input class="form-check-input" type="radio" name="requestsoal{{ $item->id }}"
+                                            id="idsoal{{ $item->id }}c" value="C">
+                                            <label class="form-check-label" for="idsoal{{ $item->id }}c">
+                                                C. {{ $item->soal_opsi_c }}
+                                            </label>
+                                        </div>
+                                        <div class="col-sm-6 col-md-6 col-lg-6">
+                                            <img src="{{ asset('/foto') }}/{{ $item->soal_opsi_gambar_c }}" alt="" width="85px">
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="requestsoal{{ $item->id }}"
-                                        id="idsoal{{ $item->id }}d" value="D">
-                                    <label class="form-check-label" for="idsoal{{ $item->id }}d">
-                                        D. {{ $item->soal_opsi_d }}
-                                    </label>
+                                    <div class="row mb-2 mt-2">
+                                        <div class="col-sm-6 col-md-6 col-lg-6">
+                                            <input class="form-check-input" type="radio" name="requestsoal{{ $item->id }}"
+                                            id="idsoal{{ $item->id }}d" value="D">
+                                            <label class="form-check-label" for="idsoal{{ $item->id }}d">
+                                                D. {{ $item->soal_opsi_d }}
+                                            </label>
+                                        </div>
+                                        <div class="col-sm-6 col-md-6 col-lg-6">
+                                            <img src="{{ asset('/foto') }}/{{ $item->soal_opsi_gambar_d }}" alt="" width="85px">
+                                        </div>
+                                    </div>
                                 </div>
                                 @if ($item->soal_opsi_e !== null && $ukom->ukom_kategori == 'campur')
                                 <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="requestsoal{{ $item->id }}"
-                                        id="idsoal{{ $item->id }}e" value="E">
-                                    <label class="form-check-label" for="idsoal{{ $item->id }}e">
-                                        E. {{ $item->soal_opsi_e }}
-                                    </label>
+                                    <div class="row mb-2 mt-2">
+                                        <div class="col-sm-6 col-md-6 col-lg-6">
+                                            <input class="form-check-input" type="radio" name="requestsoal{{ $item->id }}"
+                                            id="idsoal{{ $item->id }}e" value="E">
+                                            <label class="form-check-label" for="idsoal{{ $item->id }}e">
+                                                E. {{ $item->soal_opsi_e }}
+                                            </label>
+                                        </div>
+                                        <div class="col-sm-6 col-md-6 col-lg-6">
+                                            <img src="{{ asset('/foto') }}/{{ $item->soal_opsi_gambar_e }}" alt="" width="85px">
+                                        </div>
+                                    </div>
                                 </div>
                                 @endif
                                 @endif
-                            </div>
-                            <div class="col-sm-6 col-md-6 col-lg-6">
-                                <img src="{{ asset('/foto') }}/{{ $item->soal_opsi_gambar_a }}" alt="" width="50px">
-                                <img src="{{ asset('/foto') }}/{{ $item->soal_opsi_gambar_b }}" alt="" width="50px">
-                                <img src="{{ asset('/foto') }}/{{ $item->soal_opsi_gambar_c }}" alt="" width="50px">
-                                <img src="{{ asset('/foto') }}/{{ $item->soal_opsi_gambar_d }}" alt="" width="50px">
-                                <img src="{{ asset('/foto') }}/{{ $item->soal_opsi_gambar_e }}" alt="" width="50px">
                             </div>
                         </div> @endforeach
 
