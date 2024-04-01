@@ -55,10 +55,10 @@
 
                     <form action="{{ route('client-post-cek-ujian', $ukom->id) }}" method="POST" enctype="multipart/form-data" id="submitform">
                         @csrf
-                        {{-- @dd($soal) --}}
+
                         @foreach ($soal as $item)
                         <div class="row mb-4">
-                            <div class="col-sm-6 col-md-6 col-lg-6">
+                            <div class="col-sm-12 col-md-12 col-lg-12">
                                 <label for="">Soal Nomor {{ $loop->iteration }} <br /> {!! $item->soal_isi !!}</label>
                                 <div class="form-check">
                                     <input class="form-check-input" type="radio" name="requestsoal{{ $item->id }}"
@@ -74,7 +74,7 @@
                                         B. {{ $item->soal_opsi_b }}
                                     </label>
                                 </div>
-                                @if ($ukom->ukom_kategori !== 'kepribadian' && $ukom->ukom_kategori == 'campur')
+                                @if ($ukom->ukom_kategori !== 'kepribadian')
                                 <div class="form-check">
                                     <input class="form-check-input" type="radio" name="requestsoal{{ $item->id }}"
                                         id="idsoal{{ $item->id }}c" value="C">
@@ -89,7 +89,7 @@
                                         D. {{ $item->soal_opsi_d }}
                                     </label>
                                 </div>
-                                @if ($item->soal_opsi_e !== null && $ukom->ukom_kategori == 'campur')
+                                @if ($item->soal_opsi_e !== null)
                                 <div class="form-check">
                                     <input class="form-check-input" type="radio" name="requestsoal{{ $item->id }}"
                                         id="idsoal{{ $item->id }}e" value="E">
@@ -99,13 +99,6 @@
                                 </div>
                                 @endif
                                 @endif
-                            </div>
-                            <div class="col-sm-6 col-md-6 col-lg-6">
-                                <img src="{{ asset('/foto') }}/{{ $item->soal_opsi_gambar_a }}" alt="" width="50px">
-                                <img src="{{ asset('/foto') }}/{{ $item->soal_opsi_gambar_b }}" alt="" width="50px">
-                                <img src="{{ asset('/foto') }}/{{ $item->soal_opsi_gambar_c }}" alt="" width="50px">
-                                <img src="{{ asset('/foto') }}/{{ $item->soal_opsi_gambar_d }}" alt="" width="50px">
-                                <img src="{{ asset('/foto') }}/{{ $item->soal_opsi_gambar_e }}" alt="" width="50px">
                             </div>
                         </div> @endforeach
 

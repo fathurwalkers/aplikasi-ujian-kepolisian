@@ -83,12 +83,11 @@ class SoalController extends Controller
             $randomNamaGambar_e = Str::random(10) . '.jpg';
             $soal_gambar_e = $request->file('soal_gambar_e')->move(public_path('foto'), strtolower($randomNamaGambar_e));
         }
-        dump($soal_gambar_a);
-        dump($soal_gambar_b);
-        dump($soal_gambar_c);
-        dump($soal_gambar_d);
-        dump($soal_gambar_e);
-        die;
+        // dump($soal_gambar_a);
+        // dump($soal_gambar_b);
+        // dump($soal_gambar_c);
+        // dump($soal_gambar_d);
+        // dump($soal_gambar_e);
 
         $soal = new Soal;
         $soal_kategori = $ukom->ukom_kategori;
@@ -103,11 +102,11 @@ class SoalController extends Controller
             "soal_opsi_c" => strtoupper($soal_opsi_c),
             "soal_opsi_d" => strtoupper($soal_opsi_d),
             "soal_opsi_e" => strtoupper($soal_opsi_e),
-            "soal_opsi_gambar_a" => $soal_gambar_a,
-            "soal_opsi_gambar_b" => $soal_gambar_b,
-            "soal_opsi_gambar_c" => $soal_gambar_c,
-            "soal_opsi_gambar_d" => $soal_gambar_d,
-            "soal_opsi_gambar_e" => $soal_gambar_e,
+            "soal_opsi_gambar_a" => $randomNamaGambar_a,
+            "soal_opsi_gambar_b" => $randomNamaGambar_b,
+            "soal_opsi_gambar_c" => $randomNamaGambar_c,
+            "soal_opsi_gambar_d" => $randomNamaGambar_d,
+            "soal_opsi_gambar_e" => $randomNamaGambar_e,
             "soal_jawaban" => strtoupper($soal_jawaban),
             "soal_bobot_nilai" => 10,
             "ukom_id" => $ukom->id,

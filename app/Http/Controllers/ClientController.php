@@ -2,21 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use App\Jobs\ProsesSoalReguler;
+use App\Models\Data;
+use App\Models\Hasil;
+use App\Models\Login;
+use App\Models\Riwayathasilujian;
+use App\Models\Soal;
+use App\Models\Ujian;
+use App\Models\Ukom;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Validator;
-use Illuminate\Support\Str;
-use Faker\Factory as Faker;
 use Illuminate\Support\Arr;
-use App\Models\Login;
-use App\Models\Data;
-use App\Models\Ukom;
-use App\Models\Soal;
-use App\Models\Hasil;
-use App\Models\Ujian;
-use App\Jobs\ProsesSoalReguler;
-use App\Models\Riwayathasilujian;
+use Illuminate\Support\Facades\Hash;
 
 class ClientController extends Controller
 {
@@ -29,7 +26,7 @@ class ClientController extends Controller
 
     public function index()
     {
-        if($this->users == "admin"){
+        if ($this->users == "admin") {
             return redirect()->route('dashboard')->with('status', 'Maaf anda tidak punya akses ke halaman ini.');
         }
         return view('client.index');
@@ -37,21 +34,21 @@ class ClientController extends Controller
 
     public function client_profile()
     {
-        
+
         $users = session('data_login');
-        if($this->users == "admin"){
+        if ($this->users == "admin") {
             return redirect()->route('dashboard')->with('status', 'Maaf anda tidak punya akses ke halaman ini.');
         }
         $login = Login::find($users->id);
         return view('client.client-profile', [
-            'login' => $login
+            'login' => $login,
         ]);
     }
 
     public function client_edit_profile(Request $request)
     {
         $users = session('data_login');
-        if($this->users == "admin"){
+        if ($this->users == "admin") {
             return redirect()->route('dashboard')->with('status', 'Maaf anda tidak punya akses ke halaman ini.');
         }
         $login = Login::find($users->id);
@@ -66,7 +63,7 @@ class ClientController extends Controller
             'login_email' => $request->login_email,
             'login_telepon' => $request->login_telepon,
             'login_password' => $hashPassword,
-            'updated_at' => now()
+            'updated_at' => now(),
         ]);
 
         return redirect()->route('client-profile')->with('status', 'Profile user berhasil di update!');
@@ -114,7 +111,7 @@ class ClientController extends Controller
         }
         $ukom = Ukom::findMany($array_kosong);
         return view('client.client-pilih-ukom', [
-            'ukom' => $ukom
+            'ukom' => $ukom,
         ]);
     }
 
@@ -127,11 +124,11 @@ class ClientController extends Controller
         //     return redirect()->route('client-pilih-ukom')->with('status', 'Maaf, anda sudah menyelesaikan ujian ini.');
         // }
         // if ($hasil->isEmpty()) {
-            $soal = Soal::where('ukom_id', $ukom->id)->get()->count();
-            return view('client.client-konfirmasi-token-ujian', [
-                'ukom' => $ukom,
-                'soal' => $soal,
-            ]);
+        $soal = Soal::where('ukom_id', $ukom->id)->get()->count();
+        return view('client.client-konfirmasi-token-ujian', [
+            'ukom' => $ukom,
+            'soal' => $soal,
+        ]);
         // }
         // return redirect()->route('client-pilih-ukom')->with('status', 'Maaf, halaman yang anda tuju tidak tersedia.');
     }
@@ -156,6 +153,9 @@ class ClientController extends Controller
                     return redirect()->route('client-ujian-reguler', $ukom->id);
                     break;
                 case "kecerdasan":
+                    return redirect()->route('client-ujian-reguler', $ukom->id);
+                    break;
+                case "campur":
                     return redirect()->route('client-ujian-reguler', $ukom->id);
                     break;
             }
@@ -220,7 +220,7 @@ class ClientController extends Controller
             'soal_id' => $soal->id,
             'ukom_id' => $ukom->id,
             'created_at' => now(),
-            'updated_at' => now()
+            'updated_at' => now(),
         ]);
         $save_riwayat_hasil->save();
 
@@ -348,8 +348,8 @@ class ClientController extends Controller
                 $array_hasil_soal['id_soal'][] = $pecah->id;
             } else {
                 $array_hasil_soal['iter'][] = $iter++;
-                $array_hasil_soal['jawaban_user'][] = NULL;
-                $array_hasil_soal['jawaban_soal'][] = NULL;
+                $array_hasil_soal['jawaban_user'][] = null;
+                $array_hasil_soal['jawaban_soal'][] = null;
                 $array_hasil_soal['isi_soal'][] = $pecah->soal_isi;
                 $array_hasil_soal['original_soal'][] = $pecah->soal_kecermatan_original_isi;
                 $array_hasil_soal['pencocokan'][] = false;
@@ -367,7 +367,7 @@ class ClientController extends Controller
             'data_id' => $data->id,
             'ukom_id' => $ukom->id,
             'created_at' => now(),
-            'updated_at' => now()
+            'updated_at' => now(),
         ]);
         $save_hasil->save();
         $hasil = Hasil::find($save_hasil->id);
