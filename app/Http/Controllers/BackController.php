@@ -171,8 +171,8 @@ class BackController extends Controller
 
     public function post_register(Request $request)
     {
-        $login = Login::where("login_username", $request->login_username)->first()->toArray();
-        if ($login >= 1) {
+        $login = Login::where("login_username", $request->login_username)->first();
+        if ($login != null) {
             return back()->with('status', 'Maaf username yang anda masukkan sudah terdaftar')->withInput();
         }
         $validatedLogin = $request->validate([
