@@ -32,9 +32,9 @@
                     </button>
                     <ul class="navbar-nav ml-auto">
                         <x-dashboard-search-panel />
-                        <x-dashboard-notifikasi />
+                        {{-- <x-dashboard-notifikasi />
                         <x-dashboard-pesan />
-                        <x-dashboard-task-center />
+                        <x-dashboard-task-center /> --}}
                         <div class="topbar-divider d-none d-sm-block"></div>
                         <x-dashboard-user-panel />
                     </ul>
