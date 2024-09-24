@@ -18,7 +18,7 @@
 
     <!-- konten -->
     {{-- <div class="container " style="margin-top: 120px; height: 900px;"> --}}
-    <div class="container" style="margin-top: 120px; margin-bottom: 120px;">
+    <div class="container" style="margin-top: 100px; margin-bottom: 100px;">
 
         <div class="row row-cols-1 justify-content-center mx-auto">
             <div class="col-sm-12 col-md-12 col-lg-12 justify-content-center mx-auto">

@@ -29,7 +29,7 @@
             -webkit-appearance: none;
             -moz-appearance: none;
             appearance: none;
-            width: 25px;
+            width: 28px;
             height: 15px;
             border: 2px solid #555;
             border-radius: 0; /* Remove border radius to make it square */
@@ -69,15 +69,15 @@
             @endif
         </div>
     </div>
-    <div class="row mt-2 justify-content-center">
+    <div class="row mt-1 justify-content-center">
 
-        <div class="col-10 mb-2">
+        <div class="col-10 mb-1">
             <div class="card border-primary">
                 <div class="card-body text-left">
 
                     <div class="container">
 
-                        <div class="row mx-auto mb-3 text-white mx-auto d-flex justify-content-center">
+                        <div class="row mx-auto mb-1 text-white mx-auto d-flex justify-content-center">
                             <button class="btn btn-lg btn-danger py-auto pb-0 text-center text-bold">
                                 <h5 class="text-white py-auto pb-0">
                                     <b>
@@ -97,7 +97,7 @@
                             <br />
                         </div>
                         <div class="row">
-                            <p style="font-size:85%;" class="text-dark">
+                            <p style="font-size:65%;" class="text-dark">
                                 <b>
                                     <span id="nomorsoal"></span>
                                 </b>
@@ -111,7 +111,7 @@
                             </h5>
                             <br />
                         </div>
-                        <div class="row mb-2">
+                        <div class="row mb-1">
                             <div class="col-sm-12 col-md-12 col-lg-12 d-flex justify-content-center">
                                 <table class="border">
                                     <thead>
