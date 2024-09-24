@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.0/css/all.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Amatic+SC">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+
+    <style>
+        @import url(font:400 95px/1em Amatic SC;text-align:center;padding-top:140px);
+        body {
+            background: url(https://subtlepatterns.com/patterns/noise_lines.png);
+            font-family: 'Amatic SC', cursive;
+            overflow: hidden;
+            color: #fff;
+        }
+        
+        .bgoverlay {
+            background: #fff;
+            background: #fff;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+        }
+        
+        .container {
+            position: relative;
+            margin: 120px auto 0 auto;
+            width: 320px;
+        }
+        
+        .ico {
+            display: block;
+            width: 320px;
+            height: 320px;
+        }
+        
+        .open .ico {
+            animation: open 4s;
+            transform: scale(10);
+        }
+        
+        .ico .title {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-left: -95px;
+            margin-top: -73px;
+            z-index: 4;
+            font-size: 70px;
+            font-family: 'Amatic SC', cursive;
+            color: #fff;
+            cursor: pointer;
+            text-shadow: 2px 4px 3px rgba(0, 0, 0, 0.3);
+        }
+        
+        .open .ico .title {
+            opacity: 0;
+            transition: all 0.3s ease;
+            top: -100px;
+        }
+        
+        .ico:before,
+        .ico:after,
+        .ico2:before,
+        .ico2:after {
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        
+        .ico:before,
+        .ico:after,
+        .ico2:before,
+        .ico2:after {
+            display: block;
+            font-size: 20em;
+            color: #000;
+            content: "\f004";
+            font-family: FontAwesome;
+            text-rendering: auto;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        
+        .ico2:before,
+        .ico2:after {
+            color: #000;
+        }
+        
+        .ico:before {
+            z-index: 3;
+        }
+        
+        .ico:after {
+            animation: explode 4s infinite;
+        }
+        
+        .ico2:before {
+            animation: explodeSmall 3s infinite;
+        }
+        
+        .ico2:after {
+            animation: explodeSmall 2s infinite;
+        }
+        
+        .endtext {
+            opacity: 0;
+            position: absolute;
+            top: -100px;
+            width: 100%;
+        }
+        
+        .open .endtext {
+            top: 0;
+            opacity: 1;
+            animation: show 5s;
+        }
+        
+        .endtext .close {
+            position: absolute;
+            top: 0;
+            right: 0;
+            cursor: pointer;
+            text-shadow: 2px 4px 3px rgba(0, 0, 0, 0.3);
+        }
+        
+        .endtext h1,
+        .endtext h2,
+        .endtext h3 {
+            text-shadow: 2px 4px 3px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            font-weight: normal;
+        }
+        
+        .endtext h1 {
+            font-size: 50px;
+        }
+        
+        .endtext h2 {
+            font-size: 30px;
+        }
+        
+        .endtext h3 {
+            font-size: 20px;
+        }
+        
+        @keyframes explode {
+            from {
+                transform: scale(1);
+                opacity: 1;
+            }
+            to {
+                transform: scale(1.6);
+                opacity: 0;
+            }
+        }
+        
+        @keyframes explodeSmall {
+            from {
+                transform: scale(1);
+                opacity: 1;
+            }
+            to {
+                transform: scale(1.2);
+                opacity: 0;
+            }
+        }
+        
+        @keyframes open {
+            from {
+                transform: scale(1);
+            }
+            to {
+                transform: scale(10);
+            }
+        }
+        
+        @keyframes show {
+            from {
+                opacity: 0;
+                top: -100px;
+            }
+            to {
+                opacity: 1;
+                top: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="bgoverlay">
+        <div class="container">
+            <span class="ico">
+            <span class="ico2"></span>
+            <span class="title">Click Me</span>
+            </span>
+            <div class="endtext">
+                <span class="close" title="Close"><i class="fa fa-times"></i></span>
+                <h1>Morning, Zamrah :D</h1>
+                <h2>~</h2>
+                <h3>fathur</h3>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js" integrity="sha512-pumBsjNRGGqkPzKHndZMaAG+bir374sORyzM3uulLV14lN5LyykqNk8eEeUlUkB3U0M4FApyaHraT65ihJhDpQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        $(document).ready(function() {
+            $('.title').click(function() {
+                $('.container').addClass('open');
+            });
+
+
+            $('.close').click(function() {
+                $('.container').removeClass('open');
+            });
+        });
+    </script>
+
+</body>
+
+</html>
