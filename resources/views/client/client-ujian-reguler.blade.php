@@ -45,7 +45,6 @@
 
                     <div class="row">
                         <p style="font-size:95%;" class="text-dark">
-                            Waktu Tersisa :
                             <b>
                                 <span id="timer"></span>
                             </b>
@@ -209,8 +208,18 @@
 
         // Menampilkan timer pada halaman HTML
         function displayTimer(timer) {
+            var hours = Math.floor(timer / 3600);
+            var minutes = Math.floor((timer % 3600) / 60);
+            var seconds = timer % 60;
+
+            // Format menjadi 2 digit untuk jam, menit, dan detik
+            var formattedTime =
+                (hours < 10 ? "0" : "") + hours + ":" +
+                (minutes < 10 ? "0" : "") + minutes + ":" +
+                (seconds < 10 ? "0" : "") + seconds;
+
             var timerElement = document.getElementById('timer');
-            timerElement.textContent = timer + ' detik';
+            timerElement.textContent = formattedTime;
         }
 
         // Memulai timer saat halaman dimuat

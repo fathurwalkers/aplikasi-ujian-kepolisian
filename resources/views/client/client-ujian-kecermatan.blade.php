@@ -23,6 +23,39 @@
     <link rel="stylesheet" href="{{ asset('login-assets') }}/css/vertical-layout-light/style.css" />
     <!-- endinject -->
     <link rel="shortcut icon" href="{{ asset('login-assets') }}/images/favicon.png" />
+    <style>
+        /* Custom radio button to look like a square checkbox */
+        .form-check-input[type="radio"] {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            width: 25px;
+            height: 15px;
+            border: 2px solid #555;
+            border-radius: 0; /* Remove border radius to make it square */
+            display: inline-block;
+            position: relative;
+        }
+    
+        .form-check-input[type="radio"]:checked {
+            background-color: #0c0c0c;
+        }
+    
+        .form-check-input[type="radio"]::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 10px;
+            height: 10px;
+            background-color: transparent;
+        }
+    
+        .form-check-input[type="radio"]:checked::before {
+            background-color: white;
+        }
+    </style>
 @endpush
 
 
@@ -47,7 +80,6 @@
                         <div class="row mx-auto mb-3 text-white mx-auto d-flex justify-content-center">
                             <button class="btn btn-lg btn-danger py-auto pb-0 text-center text-bold">
                                 <h5 class="text-white py-auto pb-0">
-                                    Waktu Tersisa :
                                     <b>
                                         <span id="timer"></span>
                                     </b>
@@ -140,49 +172,57 @@
                     onsubmit="return false;">
                     @csrf
                     <div class="row mb-1 mt-1">
-                        <div class="col-sm-12 col-md-12 col-lg-12">
-                            <input type="hidden" name="soalcount" value={{ $index_count++ }} class="countsoal">
-                            <div class="form-check">
-                                <input class="form-check-input inputsoal" type="radio"
-                                    name="requestsoal{{ $item->id }}" id="idsoal{{ $item->id }}a"
-                                    value="{{ $item->soal_opsi_a }}:{{ $item->id }}">
-                                <label class="form-check-label" for="idsoal{{ $item->id }}a">
-                                    {{ htmlspecialchars($item->soal_opsi_a) }}
-                                </label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input inputsoal" type="radio"
-                                    name="requestsoal{{ $item->id }}" id="idsoal{{ $item->id }}b"
-                                    value="{{ $item->soal_opsi_b }}:{{ $item->id }}">
-                                <label class="form-check-label" for="idsoal{{ $item->id }}b">
-                                    {{ htmlspecialchars($item->soal_opsi_b) }}
-                                </label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input inputsoal" type="radio"
-                                    name="requestsoal{{ $item->id }}" id="idsoal{{ $item->id }}c"
-                                    value="{{ $item->soal_opsi_c }}:{{ $item->id }}">
-                                <label class="form-check-label" for="idsoal{{ $item->id }}c">
-                                    {{ htmlspecialchars($item->soal_opsi_c) }}
-                                </label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input inputsoal" type="radio"
-                                    name="requestsoal{{ $item->id }}" id="idsoal{{ $item->id }}d"
-                                    value="{{ $item->soal_opsi_d }}:{{ $item->id }}">
-                                <label class="form-check-label" for="idsoal{{ $item->id }}d">
-                                    {{ htmlspecialchars($item->soal_opsi_d) }}
-                                </label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input inputsoal" type="radio"
-                                    name="requestsoal{{ $item->id }}" id="idsoal{{ $item->id }}d"
-                                    value="{{ $item->soal_opsi_e }}:{{ $item->id }}">
-                                <label class="form-check-label" for="idsoal{{ $item->id }}d">
-                                    {{ htmlspecialchars($item->soal_opsi_e) }}
-                                </label>
+                        {{-- <div class="col-sm-12 col-md-12 col-lg-12"> --}}
+                        <input type="hidden" name="soalcount" value={{ $index_count++ }} class="countsoal">
+                        <div class="form-group d-flex justify-content-center">
+                            <!-- Add d-flex and justify-content-center -->
+                            <div class="form-check d-inline-block mt-4">
+                                <!-- d-inline-block and margin for spacing -->
+
+                                <div class="form-check d-inline-block mx-1">
+                                    <input class="form-check-input inputsoal" type="radio"
+                                        name="requestsoal{{ $item->id }}" id="idsoal{{ $item->id }}a"
+                                        value="{{ $item->soal_opsi_a }}:{{ $item->id }}">
+                                    <label class="form-check-label" for="idsoal{{ $item->id }}a">
+                                        {{ htmlspecialchars($item->soal_opsi_a) }}
+                                    </label>
+                                </div>
+                                <div class="form-check d-inline-block mx-1">
+                                    <input class="form-check-input inputsoal" type="radio"
+                                        name="requestsoal{{ $item->id }}" id="idsoal{{ $item->id }}b"
+                                        value="{{ $item->soal_opsi_b }}:{{ $item->id }}">
+                                    <label class="form-check-label" for="idsoal{{ $item->id }}b">
+                                        {{ htmlspecialchars($item->soal_opsi_b) }}
+                                    </label>
+                                </div>
+                                <div class="form-check d-inline-block mx-1">
+                                    <input class="form-check-input inputsoal" type="radio"
+                                        name="requestsoal{{ $item->id }}" id="idsoal{{ $item->id }}c"
+                                        value="{{ $item->soal_opsi_c }}:{{ $item->id }}">
+                                    <label class="form-check-label" for="idsoal{{ $item->id }}c">
+                                        {{ htmlspecialchars($item->soal_opsi_c) }}
+                                    </label>
+                                </div>
+                                <div class="form-check d-inline-block mx-1">
+                                    <input class="form-check-input inputsoal" type="radio"
+                                        name="requestsoal{{ $item->id }}" id="idsoal{{ $item->id }}d"
+                                        value="{{ $item->soal_opsi_d }}:{{ $item->id }}">
+                                    <label class="form-check-label" for="idsoal{{ $item->id }}d">
+                                        {{ htmlspecialchars($item->soal_opsi_d) }}
+                                    </label>
+                                </div>
+                                <div class="form-check d-inline-block mx-1">
+                                    <input class="form-check-input inputsoal" type="radio"
+                                        name="requestsoal{{ $item->id }}" id="idsoal{{ $item->id }}d"
+                                        value="{{ $item->soal_opsi_e }}:{{ $item->id }}">
+                                    <label class="form-check-label" for="idsoal{{ $item->id }}d">
+                                        {{ htmlspecialchars($item->soal_opsi_e) }}
+                                    </label>
+                                </div>
+
                             </div>
                         </div>
+                        {{-- </div> --}}
                     </div>
                 </form>
             @endforeach
@@ -549,8 +589,18 @@
 
         // Menampilkan timer pada halaman HTML
         function displayTimer(timer) {
+            var hours = Math.floor(timer / 3600);
+            var minutes = Math.floor((timer % 3600) / 60);
+            var seconds = timer % 60;
+
+            // Format menjadi 2 digit untuk jam, menit, dan detik
+            var formattedTime =
+                (hours < 10 ? "0" : "") + hours + ":" +
+                (minutes < 10 ? "0" : "") + minutes + ":" +
+                (seconds < 10 ? "0" : "") + seconds;
+
             var timerElement = document.getElementById('timer');
-            timerElement.textContent = timer + ' detik';
+            timerElement.textContent = formattedTime;
         }
 
         // Memulai timer saat halaman dimuat
