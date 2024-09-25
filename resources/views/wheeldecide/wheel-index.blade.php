@@ -3,7 +3,53 @@
 @section('title', 'Halaman Index')
 
 @push('css')
+    <style>
+        /* CSS untuk teks dengan stroke */
+        .text-stroke {
+            /* Ukuran font */
+            font-weight: bold;
+            color: rgb(255, 217, 0);
+            /* Warna isi teks */
+            -webkit-text-stroke: 1px #fff;
+            /* Warna dan ketebalan stroke */
+            text-shadow:
+                1px 1px 0px #fff,
+                /* Shadow hitam ke kanan bawah */
+                -1px 1px 0px #fff,
+                /* Shadow hitam ke kiri bawah */
+                1px -1px 0px #fff,
+                /* Shadow hitam ke kanan atas */
+                -1px -1px 0px #fff;
+            /* Shadow hitam ke kiri atas */
+        }
+    </style>
+
     <style media="screen">
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        section.color {
+            min-height: 100vh;
+            width: 100%;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        #canvasContainer {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 100%;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
         .rf {
             width: 50%;
             margin-left: auto;
@@ -201,18 +247,18 @@
 
 @section('main-content')
 
-    <div class="container mb-2 pb-2">
+    <div class="container" id="containers">
         <div class="row mx-auto mt-4 mb-1">
             <div class="col-sm-12 col-md-12 col-lg-12">
-                <h3 class="text-center">
+                <h3 class="text-center text-stroke">
                     Selamat Datang!
                 </h3>
-                <p class="text-center">
+                <p class="text-center" style="color:#fff;">
                     Silahkan isikan nama-nama pilihan untuk melakukan Name Polling
                 </p>
             </div>
         </div>
-        <div class="row">
+        <div class="row inputnama">
             <div class="col-sm-12 col-md-12 col-lg-12">
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
@@ -223,51 +269,85 @@
                 </div>
             </div>
         </div>
-        <div class="row">
+        <div class="row inputnama">
             <div class="col-sm-12 col-md-12 col-lg-12">
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
-                        <span class="input-group-text" id="basic-addon1">2</span>
+                        <span class="input-group-text" id="basic-addon2">2</span>
                     </div>
                     <input type="text" class="form-control" placeholder="Nama peserta..." aria-label="Username"
-                        aria-describedby="basic-addon1">
+                        aria-describedby="basic-addon2">
                 </div>
             </div>
         </div>
-        <div class="row">
+        <div class="row inputnama">
             <div class="col-sm-12 col-md-12 col-lg-12">
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
-                        <span class="input-group-text" id="basic-addon1">3</span>
+                        <span class="input-group-text" id="basic-addon3">3</span>
                     </div>
                     <input type="text" class="form-control" placeholder="Nama peserta..." aria-label="Username"
-                        aria-describedby="basic-addon1">
+                        aria-describedby="basic-addon3">
                 </div>
             </div>
         </div>
-        <div class="row">
+        <div class="row inputnama">
             <div class="col-sm-12 col-md-12 col-lg-12">
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
-                        <span class="input-group-text" id="basic-addon1">4</span>
+                        <span class="input-group-text" id="basic-addon4">4</span>
                     </div>
                     <input type="text" class="form-control" placeholder="Nama peserta..." aria-label="Username"
-                        aria-describedby="basic-addon1">
+                        aria-describedby="basic-addon4">
                 </div>
             </div>
         </div>
+    </div>
 
-        <div class="row mt-2 mb-1">
+    <div class="container mt-1">
+        <div class="row mb-1">
             <div class="col-sm-12 col-md-12 col-lg-12 d-flex justify-content-end">
-                <button class="btn btn-md btn-info">
+                <button id="addParticipantButton" class="btn btn-md btn-info">
                     Tambah Nama
                 </button>
             </div>
         </div>
-
     </div>
 
 @endsection
 
 @push('js')
+    <script>
+        document.getElementById('addParticipantButton').onclick = function() {
+            // Ambil container
+            var container = document.getElementById('containers');
+            console.log(container);
+
+            // Hitung jumlah elemen "row" yang sudah ada
+            var count = container.getElementsByClassName('inputnama').length + 1;
+            console.log(count);
+
+            // Buat elemen div baru dengan class "row"
+            var newDiv = document.createElement('div');
+            newDiv.className = 'row inputnama';
+
+            // Tambahkan HTML ke dalam elemen div yang baru
+            newDiv.innerHTML = `
+                <div class="col-sm-12 col-md-12 col-lg-12">
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon${count}">${count}</span> 
+                        </div>
+                        <input type="text" class="form-control" placeholder="Nama peserta..." aria-label="Username"
+                            aria-describedby="basic-addon${count}">
+                    </div>
+                </div>
+            `;
+
+            console.log(newDiv);
+
+            // Tambahkan elemen div baru ke dalam container
+            container.appendChild(newDiv);
+        };
+    </script>
 @endpush
