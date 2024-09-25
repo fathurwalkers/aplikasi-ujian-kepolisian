@@ -95,3 +95,7 @@ Route::get('/generate-petugas', [GenerateController::class, 'generate_petugas'])
 Route::get('/generate-soal', [GenerateController::class, 'generate_soal'])->name('generate-soal');
 Route::get('/generate-ujian', [GenerateController::class, 'generate_ujian'])->name('generate-ujian');
 Route::get('/generate-chained', [GenerateController::class, 'chained_generate'])->name('generate-chained');
+
+Route::group(['prefix' => 'wheeldecide'], function () {
+    Route::get('/', [WheelController::class, 'index'])->name('wheel');
+});

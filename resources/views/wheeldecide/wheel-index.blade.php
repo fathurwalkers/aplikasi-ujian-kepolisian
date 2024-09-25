@@ -1,0 +1,1 @@
+@extends('wheeldecide.wheel-layout')
