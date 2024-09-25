@@ -5,6 +5,7 @@ use App\Http\Controllers\ClientController;
 use App\Http\Controllers\GenerateController;
 use App\Http\Controllers\PesertaController;
 use App\Http\Controllers\PetugasController;
+use App\Http\Controllers\WheelController;
 use App\Http\Controllers\SoalController;
 use App\Http\Controllers\UjianController;
 use App\Http\Controllers\UkomController;
