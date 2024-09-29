@@ -246,73 +246,78 @@
 @endpush
 
 @section('main-content')
+    <form action="{{ route('proses-nama-polling') }}" method="POST">
+        @csrf
+        <div class="container" id="containers">
+            <div class="row mx-auto mt-4 mb-1">
+                <div class="col-sm-12 col-md-12 col-lg-12">
+                    <h3 class="text-center text-stroke">
+                        Selamat Datang!
+                    </h3>
+                    <p class="text-center" style="color:#fff;">
+                        Silahkan isikan nama-nama pilihan untuk melakukan Name Polling
+                    </p>
+                </div>
+            </div>
+            <div class="row inputnama">
+                <div class="col-sm-12 col-md-12 col-lg-12">
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon1">1</span>
+                        </div>
+                        <input type="text" name="nama[]" class="form-control" placeholder="Nama peserta..."
+                            aria-label="Username" aria-describedby="basic-addon1">
+                    </div>
+                </div>
+            </div>
+            <div class="row inputnama">
+                <div class="col-sm-12 col-md-12 col-lg-12">
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon2">2</span>
+                        </div>
+                        <input type="text" name="nama[]" class="form-control" placeholder="Nama peserta..."
+                            aria-label="Username" aria-describedby="basic-addon2">
+                    </div>
+                </div>
+            </div>
+            <div class="row inputnama">
+                <div class="col-sm-12 col-md-12 col-lg-12">
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon3">3</span>
+                        </div>
+                        <input type="text" name="nama[]" class="form-control" placeholder="Nama peserta..."
+                            aria-label="Username" aria-describedby="basic-addon3">
+                    </div>
+                </div>
+            </div>
+            <div class="row inputnama">
+                <div class="col-sm-12 col-md-12 col-lg-12">
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon4">4</span>
+                        </div>
+                        <input type="text" name="nama[]" class="form-control" placeholder="Nama peserta..."
+                            aria-label="Username" aria-describedby="basic-addon4">
+                    </div>
+                </div>
+            </div>
 
-    <div class="container" id="containers">
-        <div class="row mx-auto mt-4 mb-1">
-            <div class="col-sm-12 col-md-12 col-lg-12">
-                <h3 class="text-center text-stroke">
-                    Selamat Datang!
-                </h3>
-                <p class="text-center" style="color:#fff;">
-                    Silahkan isikan nama-nama pilihan untuk melakukan Name Polling
-                </p>
-            </div>
         </div>
-        <div class="row inputnama">
-            <div class="col-sm-12 col-md-12 col-lg-12">
-                <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text" id="basic-addon1">1</span>
-                    </div>
-                    <input type="text" class="form-control" placeholder="Nama peserta..." aria-label="Username"
-                        aria-describedby="basic-addon1">
-                </div>
-            </div>
-        </div>
-        <div class="row inputnama">
-            <div class="col-sm-12 col-md-12 col-lg-12">
-                <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text" id="basic-addon2">2</span>
-                    </div>
-                    <input type="text" class="form-control" placeholder="Nama peserta..." aria-label="Username"
-                        aria-describedby="basic-addon2">
-                </div>
-            </div>
-        </div>
-        <div class="row inputnama">
-            <div class="col-sm-12 col-md-12 col-lg-12">
-                <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text" id="basic-addon3">3</span>
-                    </div>
-                    <input type="text" class="form-control" placeholder="Nama peserta..." aria-label="Username"
-                        aria-describedby="basic-addon3">
-                </div>
-            </div>
-        </div>
-        <div class="row inputnama">
-            <div class="col-sm-12 col-md-12 col-lg-12">
-                <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text" id="basic-addon4">4</span>
-                    </div>
-                    <input type="text" class="form-control" placeholder="Nama peserta..." aria-label="Username"
-                        aria-describedby="basic-addon4">
-                </div>
-            </div>
-        </div>
-    </div>
 
-    <div class="container mt-1">
-        <div class="row mb-1">
-            <div class="col-sm-12 col-md-12 col-lg-12 d-flex justify-content-end">
-                <button id="addParticipantButton" class="btn btn-md btn-info">
+        <div class="container mt-1">
+            <div class="d-flex justify-content-between">
+                <button id="" type="submit" class="btn btn-md btn-success">
+                    Mulai!
+                </button>
+                <button id="addParticipantButton" class="btn btn-md btn-info" type="button">
                     Tambah Nama
                 </button>
             </div>
         </div>
-    </div>
+
+    </form>
 
 @endsection
 
@@ -338,7 +343,7 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text" id="basic-addon${count}">${count}</span> 
                         </div>
-                        <input type="text" class="form-control" placeholder="Nama peserta..." aria-label="Username"
+                        <input type="text" name="nama[]" class="form-control" placeholder="Nama peserta..." aria-label="Username"
                             aria-describedby="basic-addon${count}">
                     </div>
                 </div>

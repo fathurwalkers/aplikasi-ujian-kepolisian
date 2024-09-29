@@ -98,5 +98,7 @@ Route::get('/generate-ujian', [GenerateController::class, 'generate_ujian'])->na
 Route::get('/generate-chained', [GenerateController::class, 'chained_generate'])->name('generate-chained');
 
 Route::group(['prefix' => 'wheeldecide'], function () {
-    Route::get('/', [WheelController::class, 'index'])->name('wheel');
+    Route::get('/', [WheelController::class, 'index'])->name('wheel'); 
+    Route::post('/proses-nama-polling', [WheelController::class, 'proses_nama_polling'])->name('proses-nama-polling');
+    Route::get('/spin', [WheelController::class, 'spin'])->name('spin');
 });

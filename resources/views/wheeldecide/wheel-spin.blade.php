@@ -4,6 +4,21 @@
 
 @push('css')
     <style media="screen">
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        section.color {
+            min-height: 100vh;
+            width: 100%;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
         .rf {
             width: 50%;
             margin-left: auto;
@@ -34,11 +49,11 @@
         }
 
         /* #prizePointer {
-        position: absolute;
-        left: 48.4%;
-        top: 10px;
-        z-index: 999;
-    } */
+                                                                                                                                            position: absolute;
+                                                                                                                                            left: 48.4%;
+                                                                                                                                            top: 10px;
+                                                                                                                                            z-index: 999;
+                                                                                                                                        } */
         .pc {
             position: inherit;
             margin-bottom: -60px;
@@ -53,11 +68,11 @@
             }
 
             /* #prizePointer {
-      position: absolute;
-      left: 43.4%;
-      top: 10px;
-       z-index: 999;
-      } */
+                                                                                                                                          position: absolute;
+                                                                                                                                          left: 43.4%;
+                                                                                                                                          top: 10px;
+                                                                                                                                           z-index: 999;
+                                                                                                                                          } */
         }
 
         @media only screen and (min-width: 320px) and (max-width: 320px) {
@@ -68,11 +83,11 @@
             }
 
             /* #prizePointer {
-      position: absolute;
-      left: 42%;
-      top: 5px;
-       z-index: 999;
-      } */
+                                                                                                                                          position: absolute;
+                                                                                                                                          left: 42%;
+                                                                                                                                          top: 5px;
+                                                                                                                                           z-index: 999;
+                                                                                                                                          } */
         }
 
         .rbstyle {
@@ -227,7 +242,6 @@
                     <h2 class="section-heading text-uppercase" style="color: white">
                         Add an element to render the wheel.
                     </h2>
-                    <!-- <h3 class="section-subheading text-muted">Online tool just for fun.</h3> -->
                 </div>
             </div>
         </div>
@@ -239,7 +253,6 @@
                     <h2 class="section-heading text-uppercase" style="color: white">
                         Wheel
                     </h2>
-                    <!-- <h3 class="section-subheading text-muted">Online tool just for fun.</h3> -->
                 </div>
             </div>
         </div>
@@ -255,16 +268,14 @@
             Canvas not supported, use another browser.
         </canvas>
     </div>
-    <!-- <div style="text-align: center">
-                <button
-                  class="btn btn-primary btn-xl js-scrol-trigger rm"
-                  id="spinWheel"
-                >
-                  Kocok!
-                </button>
-                </div> -->
     <div style="text-align: center">
-        <button class="btn btn-primary btn-xl js-scrol-trigger rm" id="modi1" onClick="show2();">
+        <button onclick="location.href = '{{ route('wheel') }}';" class="btn btn-primary btn-xl js-scrol-trigger rm"
+            id="">
+            Kembali
+        </button>
+    </div>
+    <div style="text-align: center">
+        {{-- <button class="btn btn-primary btn-xl js-scrol-trigger rm" id="modi1" onClick="show2();">
             Modify Wheel
         </button>
         <p class="text-muted" id="notice" style="display: none; color: white !important">
@@ -281,10 +292,10 @@
         <button class="btn btn-primary btn-xl js-scrol-trigger rm" id="bigButton" class="bigButton" style="display: none"
             onclick="show3();">
             Save Changes
-        </button>
+        </button> --}}
 
         <a style="color: white" class="rm" href="javascript:void(0);" id="reset1"
-            onclick="theWheel.stopAnimation(false); theWheel.rotationAngle=0; theWheel.draw();">Reset</a>
+            onclick="theWheel.stopAnimation(false); theWheel.rotationAngle=0; theWheel.draw();"></a>
     </div>
 @endsection
 
@@ -351,30 +362,40 @@
             "indigo",
             "violet",
         ];
+
         let theWheel = new Winwheel({
-            numSegments: 4,
+            numSegments: {{ $count_nama }},
             lineWidth: 4,
             textFillStyle: "#ffffff",
             textFontFamily: "Roboto Slab",
             strokeStyle: "#ffffff",
             innerRadius: 35,
             // use pointerGuide to help.
-            segments: [{
-                    fillStyle: "violet",
-                    text: "Segment 1"
-                },
-                {
-                    fillStyle: "indigo",
-                    text: "Segment 2"
-                },
-                {
-                    fillStyle: "blue",
-                    text: "Segment 3"
-                },
-                {
-                    fillStyle: "green",
-                    text: "Segment 4"
-                },
+            segments: [
+                @foreach ($nama as $nm)
+                    @php
+                        $randomcolor = Arr::random($array_color);
+                    @endphp {
+                        fillStyle: "{{ $randomcolor }}",
+                        text: "{{ $nm }}"
+                    },
+                @endforeach
+                // {
+                //     fillStyle: "violet",
+                //     text: "Segment 1"
+                // },
+                // {
+                //     fillStyle: "indigo",
+                //     text: "Segment 2"
+                // },
+                // {
+                //     fillStyle: "blue",
+                //     text: "Segment 3"
+                // },
+                // {
+                //     fillStyle: "green",
+                //     text: "Segment 4"
+                // },
             ],
             outerRadius: 170,
             responsive: true,
@@ -392,7 +413,7 @@
             },
             flag: 0,
         });
-        let audio = new Audio("tick.mp3");
+        let audio = new Audio("{{ asset('assets/wheeldecide') }}/tick.mp3");
 
         function playSound() {
             // Stop and rewind the sound (stops it if already playing).
@@ -402,6 +423,8 @@
             // Play the sound.
             audio.play();
         }
+
+        let fathurWins = 0; // Variabel untuk menghitung kemenangan "Fathur"
 
         canvas.onclick = function(e) {
             if (theWheel.flag === 0) {
@@ -415,9 +438,17 @@
                 }
 
                 if (targetSegment) {
-                    // Jika ada segmen dengan nama "fathur", roda berhenti di segmen tersebut
-                    let stopAt = theWheel.getRandomForSegment(targetSegment);
-                    theWheel.animation.stopAngle = stopAt;
+                    // Jika "Fathur" telah menang 2 kali, putar roda secara acak
+                    if (fathurWins >= 1) {
+                        // Reset kemenangan dan putar secara acak
+                        // fathurWins = 0; // Reset kemenangan
+                        theWheel.animation.stopAngle = null; // Reset animasi ke mode normal
+                    } else {
+                        // Jika segmen "fathur" ada, roda berhenti di segmen tersebut
+                        let stopAt = theWheel.getRandomForSegment(targetSegment);
+                        theWheel.animation.stopAngle = stopAt;
+                        fathurWins++; // Increment kemenangan Fathur
+                    }
                 } else {
                     // Jika segmen "Fathur" tidak ada, gunakan animasi acak normal
                     theWheel.animation.stopAngle = null; // Reset animasi ke mode normal
@@ -431,6 +462,7 @@
                     deleteSegment(segmentNumber);
                 }
             }
+            console.log(fathurWins);
         };
 
         // This function called after the spin animation has stopped.
