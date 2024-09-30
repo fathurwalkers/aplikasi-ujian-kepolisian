@@ -28,7 +28,7 @@
 @stack('css')
 
 <body id="page-top">
-    <section class="color" style="padding: 10px 0">
+    <section class="color fireworks" style="padding: 10px 0">
         @yield('main-content')
     </section>
 

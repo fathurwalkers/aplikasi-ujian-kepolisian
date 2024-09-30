@@ -19,6 +19,17 @@
             background-repeat: no-repeat;
         }
 
+        .section-contents {
+            font-size: 20px !important;
+            margin-top: 0;
+            margin-bottom: 15px;
+        }
+
+        #winner-text {
+            display: none;
+            /* Ini menyembunyikan teks awalnya */
+        }
+
         .rf {
             width: 50%;
             margin-left: auto;
@@ -49,11 +60,11 @@
         }
 
         /* #prizePointer {
-                                                                                                                                            position: absolute;
-                                                                                                                                            left: 48.4%;
-                                                                                                                                            top: 10px;
-                                                                                                                                            z-index: 999;
-                                                                                                                                        } */
+                                                                                                                                                                                                                                            position: absolute;
+                                                                                                                                                                                                                                            left: 48.4%;
+                                                                                                                                                                                                                                            top: 10px;
+                                                                                                                                                                                                                                            z-index: 999;
+                                                                                                                                                                                                                                        } */
         .pc {
             position: inherit;
             margin-bottom: -60px;
@@ -68,11 +79,11 @@
             }
 
             /* #prizePointer {
-                                                                                                                                          position: absolute;
-                                                                                                                                          left: 43.4%;
-                                                                                                                                          top: 10px;
-                                                                                                                                           z-index: 999;
-                                                                                                                                          } */
+                                                                                                                                                                                                                                          position: absolute;
+                                                                                                                                                                                                                                          left: 43.4%;
+                                                                                                                                                                                                                                          top: 10px;
+                                                                                                                                                                                                                                           z-index: 999;
+                                                                                                                                                                                                                                          } */
         }
 
         @media only screen and (min-width: 320px) and (max-width: 320px) {
@@ -83,11 +94,11 @@
             }
 
             /* #prizePointer {
-                                                                                                                                          position: absolute;
-                                                                                                                                          left: 42%;
-                                                                                                                                          top: 5px;
-                                                                                                                                           z-index: 999;
-                                                                                                                                          } */
+                                                                                                                                                                                                                                          position: absolute;
+                                                                                                                                                                                                                                          left: 42%;
+                                                                                                                                                                                                                                          top: 5px;
+                                                                                                                                                                                                                                           z-index: 999;
+                                                                                                                                                                                                                                          } */
         }
 
         .rbstyle {
@@ -251,8 +262,15 @@
             <div class="row">
                 <div class="col-lg-12 text-center">
                     <h2 class="section-heading text-uppercase" style="color: white">
-                        Wheel
+                        LUCKYSPIN
                     </h2>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12 col-md-12 col-lg-12 d-flex justify-content-center">
+                <div id="pemenang">
+                    <div id="winner-text" class="section-contents text-uppercase">Pemenang: </div>
                 </div>
             </div>
         </div>
@@ -301,6 +319,16 @@
 
 
 @push('js')
+    <!-- jsDelivr  -->
+    <script src="https://cdn.jsdelivr.net/npm/fireworks-js@2.x/dist/index.umd.js"></script>
+
+    <!-- UNPKG -->
+    <script src="https://unpkg.com/fireworks-js@2.x/dist/index.umd.js"></script>
+    <script>
+        const container = document.querySelector('.fireworks')
+        const fireworks = new Fireworks.default(container)
+        // fireworks.start()
+    </script>
     <script type="text/javascript">
         const openModalButtons = document.querySelectorAll("[data-modal-target]");
         const closeModalButtons = document.querySelectorAll(
@@ -414,6 +442,8 @@
             flag: 0,
         });
         let audio = new Audio("{{ asset('assets/wheeldecide') }}/tick.mp3");
+        let winArcade = new Audio("{{ asset('assets/wheeldecide') }}/winarcade.mp3");
+        let winVoice = new Audio("{{ asset('assets/wheeldecide') }}/winvoice.mp3");
 
         function playSound() {
             // Stop and rewind the sound (stops it if already playing).
@@ -427,6 +457,12 @@
         let fathurWins = 0; // Variabel untuk menghitung kemenangan "Fathur"
 
         canvas.onclick = function(e) {
+            winArcade.pause();
+            winArcade.currentTime = 0;
+            winVoice.pause();
+            winVoice.currentTime = 0;
+            const winnerText = document.getElementById('winner-text');
+            winnerText.style.display = 'none';
             if (theWheel.flag === 0) {
                 // Cek apakah ada segmen dengan nama "fathur"
                 let targetSegment = null;
@@ -465,13 +501,26 @@
             console.log(fathurWins);
         };
 
+        // function showWinner(winner) {
+        //     const winnerText = document.getElementById('winner-text');
+        //     winnerText.textContent = "Pemenang: " + winningSegment.text;
+        //     winnerText.style.display = 'block';
+        // }
+
         // This function called after the spin animation has stopped.
         function alertPrize() {
             // Call getIndicatedSegment() function to return pointer to the segment pointed to on wheel.
+            winArcade.play();
+            winVoice.play();
             let winningSegment = theWheel.getIndicatedSegment();
 
             // Basic alert of the segment text which is the prize name.
-            alert("You have won " + winningSegment.text + "!");
+            // alert("You have won " + winningSegment.text + "!");
+
+            const winnerText = document.getElementById('winner-text');
+            winnerText.textContent = "Pemenang: " + winningSegment.text;
+            winnerText.style.display = 'block';
+
             document.getElementById("reset1").click();
         }
 
