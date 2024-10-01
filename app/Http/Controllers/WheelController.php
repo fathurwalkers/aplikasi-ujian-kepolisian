@@ -21,17 +21,31 @@ class WheelController extends Controller
 
     public function proses_nama_polling(Request $request)
     {
-        $nama = $request->nama;
-
+        $if_session = session('nama');
+        if ($if_session !== null) {
+            $request->session()->forget(['nama']);
+            $request->session()->flush();
+            return redirect()->route('wheel');
+        }
+        $request_nama = $request->nama;
+        if ($request_nama[0] === null) {
+            return redirect()->route('wheel');
+        }
+        $nama = array();
+        foreach ($request_nama as $rq) {
+            if ($rq !== null) {
+                $nama = Arr::prepend($nama, $rq);
+            }
+        }
         $session_nama = session(['nama' => $nama]);
 
         return redirect()->route('spin');
     }
 
-    public function spin()
+    public function spin(Request $request)
     {
         $check_session = session('nama');
-        $nama = $check_session; 
+        $nama = $check_session;
         $count_nama = count($nama);
 
         $array_color = [
@@ -57,6 +71,6 @@ class WheelController extends Controller
             'nama' => $nama,
             'count_nama' => $count_nama,
             'array_color' => $array_color,
-        ]); 
+        ]);
     }
 }
