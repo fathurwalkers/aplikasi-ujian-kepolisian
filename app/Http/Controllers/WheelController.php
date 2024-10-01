@@ -11,21 +11,15 @@ class WheelController extends Controller
 {
     public function index(Request $request)
     {
-        $check_session = session('nama');
-        if ($check_session !== null) {
-            $request->session()->forget(['nama']);
-            $request->session()->flush();
-        }
         return view('wheeldecide.wheel-index');
     }
 
     public function proses_nama_polling(Request $request)
     {
-        $if_session = session('nama');
-        if ($if_session !== null) {
+        $check_session = session('nama');
+        if ($check_session !== null) {
             $request->session()->forget(['nama']);
             $request->session()->flush();
-            return redirect()->route('wheel');
         }
         $request_nama = $request->nama;
         if ($request_nama[0] === null) {
@@ -38,7 +32,6 @@ class WheelController extends Controller
             }
         }
         $session_nama = session(['nama' => $nama]);
-
         return redirect()->route('spin');
     }
 

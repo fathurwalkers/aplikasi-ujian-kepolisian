@@ -22,6 +22,9 @@
         .section-contents {
             font-size: 20px !important;
             margin-top: 0;
+            font-weight: 500 !important;
+            color: white !important;
+
             margin-bottom: 15px;
         }
 
@@ -60,11 +63,11 @@
         }
 
         /* #prizePointer {
-                                                                                                                                                                                                                                            position: absolute;
-                                                                                                                                                                                                                                            left: 48.4%;
-                                                                                                                                                                                                                                            top: 10px;
-                                                                                                                                                                                                                                            z-index: 999;
-                                                                                                                                                                                                                                        } */
+                                                                                                                                                                                                                                                    position: absolute;
+                                                                                                                                                                                                                                                    left: 48.4%;
+                                                                                                                                                                                                                                                    top: 10px;
+                                                                                                                                                                                                                                                    z-index: 999;
+                                                                                                                                                                                                                                                } */
         .pc {
             position: inherit;
             margin-bottom: -60px;
@@ -79,11 +82,11 @@
             }
 
             /* #prizePointer {
-                                                                                                                                                                                                                                          position: absolute;
-                                                                                                                                                                                                                                          left: 43.4%;
-                                                                                                                                                                                                                                          top: 10px;
-                                                                                                                                                                                                                                           z-index: 999;
-                                                                                                                                                                                                                                          } */
+                                                                                                                                                                                                                                                  position: absolute;
+                                                                                                                                                                                                                                                  left: 43.4%;
+                                                                                                                                                                                                                                                  top: 10px;
+                                                                                                                                                                                                                                                   z-index: 999;
+                                                                                                                                                                                                                                                  } */
         }
 
         @media only screen and (min-width: 320px) and (max-width: 320px) {
@@ -94,11 +97,11 @@
             }
 
             /* #prizePointer {
-                                                                                                                                                                                                                                          position: absolute;
-                                                                                                                                                                                                                                          left: 42%;
-                                                                                                                                                                                                                                          top: 5px;
-                                                                                                                                                                                                                                           z-index: 999;
-                                                                                                                                                                                                                                          } */
+                                                                                                                                                                                                                                                  position: absolute;
+                                                                                                                                                                                                                                                  left: 42%;
+                                                                                                                                                                                                                                                  top: 5px;
+                                                                                                                                                                                                                                                   z-index: 999;
+                                                                                                                                                                                                                                                  } */
         }
 
         .rbstyle {

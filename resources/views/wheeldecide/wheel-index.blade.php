@@ -252,10 +252,10 @@
             <div class="row mx-auto mt-4 mb-1">
                 <div class="col-sm-12 col-md-12 col-lg-12">
                     <h3 class="text-center text-stroke">
-                        Selamat Datang!
+                        Welcome to Spinner!
                     </h3>
                     <p class="text-center" style="color:#fff;">
-                        Silahkan isikan nama-nama pilihan untuk melakukan Name Polling
+                        Please fill these form to start polling.
                     </p>
                 </div>
             </div>
@@ -265,8 +265,8 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text" id="basic-addon1">1</span>
                         </div>
-                        <input type="text" name="nama[]" class="form-control" placeholder="Nama peserta..."
-                            aria-label="Username" aria-describedby="basic-addon1">
+                        <input type="text" name="nama[]" class="form-control" placeholder="...." aria-label="Username"
+                            aria-describedby="basic-addon1">
                     </div>
                 </div>
             </div>
@@ -276,8 +276,8 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text" id="basic-addon2">2</span>
                         </div>
-                        <input type="text" name="nama[]" class="form-control" placeholder="Nama peserta..."
-                            aria-label="Username" aria-describedby="basic-addon2">
+                        <input type="text" name="nama[]" class="form-control" placeholder="...." aria-label="Username"
+                            aria-describedby="basic-addon2">
                     </div>
                 </div>
             </div>
@@ -287,8 +287,8 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text" id="basic-addon3">3</span>
                         </div>
-                        <input type="text" name="nama[]" class="form-control" placeholder="Nama peserta..."
-                            aria-label="Username" aria-describedby="basic-addon3">
+                        <input type="text" name="nama[]" class="form-control" placeholder="...." aria-label="Username"
+                            aria-describedby="basic-addon3">
                     </div>
                 </div>
             </div>
@@ -298,8 +298,8 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text" id="basic-addon4">4</span>
                         </div>
-                        <input type="text" name="nama[]" class="form-control" placeholder="Nama peserta..."
-                            aria-label="Username" aria-describedby="basic-addon4">
+                        <input type="text" name="nama[]" class="form-control" placeholder="...." aria-label="Username"
+                            aria-describedby="basic-addon4">
                     </div>
                 </div>
             </div>
@@ -323,16 +323,11 @@
 
 @push('js')
     <script>
+        window.localStorage.clear()
         document.getElementById('addParticipantButton').onclick = function() {
-            // Ambil container
             var container = document.getElementById('containers');
-            console.log(container);
-
-            // Hitung jumlah elemen "row" yang sudah ada
             var count = container.getElementsByClassName('inputnama').length + 1;
-            console.log(count);
 
-            // Buat elemen div baru dengan class "row"
             var newDiv = document.createElement('div');
             newDiv.className = 'row inputnama';
 
@@ -341,17 +336,13 @@
                 <div class="col-sm-12 col-md-12 col-lg-12">
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
-                            <span class="input-group-text" id="basic-addon${count}">${count}</span> 
+                            <span class="input-group-text" id="basic-addon${count}">${count}</span>
                         </div>
-                        <input type="text" name="nama[]" class="form-control" placeholder="Nama peserta..." aria-label="Username"
+                        <input type="text" name="nama[]" class="form-control" placeholder="...." aria-label="Username"
                             aria-describedby="basic-addon${count}">
                     </div>
                 </div>
             `;
-
-            console.log(newDiv);
-
-            // Tambahkan elemen div baru ke dalam container
             container.appendChild(newDiv);
         };
     </script>
